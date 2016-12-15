@@ -23,7 +23,7 @@
 <meta property="og:description" content="欢迎来到我的[博客](http://www.k3vi.xyz)，这是我的第一篇文章，之前使用hexo搭建个人博客时遇到很多的坑，所以写下这篇博客记录下安装过程。此篇主要是将从几个方面来告诉大家如何用hexo来搭建博客，下面我们开始吧！">
 <meta property="og:image" content="http://i.imgur.com/bRshCV9.png">
 <meta property="og:image" content="http://i.imgur.com/xRUCk8B.png">
-<meta property="og:updated_time" content="2016-12-15T06:31:09.890Z">
+<meta property="og:updated_time" content="2016-12-15T07:06:20.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用hexo+Github搭建个人博客教程">
 <meta name="twitter:description" content="欢迎来到我的[博客](http://www.k3vi.xyz)，这是我的第一篇文章，之前使用hexo搭建个人博客时遇到很多的坑，所以写下这篇博客记录下安装过程。此篇主要是将从几个方面来告诉大家如何用hexo来搭建博客，下面我们开始吧！">
@@ -278,7 +278,8 @@
 <p>文件功能简介</p>
 <ul>
 <li>_config.yml 网站配置文件</li>
-<li>themes 主题<br>每个文件具体的功能你可以去<a href="https://hexo.io/zh-cn/docs/setup.html" target="_blank" rel="external">官网</a>查看</li>
+<li>themes 主题</li>
+<li>source 网站资源<br>每个文件具体的功能你可以去<a href="https://hexo.io/zh-cn/docs/setup.html" target="_blank" rel="external">官网</a>查看</li>
 </ul>
 <p>此时你就可以直接执行命令来启动你的网站了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
 <p>此时博客已经初步搭建完成了，but只能在本地运行，下面我们要把他部署到github.io上面</p>
@@ -309,6 +310,7 @@
 <li>查看你的主题是否支持多说，如果支持找到主题目录的下面的_config.yml，例如你的主题是yelee，那么你的_config.yml就在/themes/yelee/_config.yml</li>
 <li>不同的主题在评论功能方面的设置是不同的，支持多说的主题只需要填入你申请的短域名就可以，例如liming.duoshuo.com你只需要填入liming就可以了</li>
 </ol>
+<h2 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h2><p>windows用户推荐使用markdown pad 2<br>新建博文 <code>$ hexo new title</code><br>然后在你博客目录source/_post/下面找到你新建的文件，使用markdown pad2编辑title.md,根据markdown语法和hexo语句来编写。具体可以参考Hexo官网</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="http://hexo.io" target="_blank" rel="external">Hexo官网文档</a></li>
 <li><a href="https://www.v2ex.com/t/189440" target="_blank" rel="external">Github Page域名解析问题</a></li>
@@ -328,7 +330,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Hexo？"><span class="toc-number">1.</span> <span class="toc-text">什么是Hexo？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装前提"><span class="toc-number">2.</span> <span class="toc-text">安装前提</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装git"><span class="toc-number">2.1.</span> <span class="toc-text">安装git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Node-js"><span class="toc-number">2.2.</span> <span class="toc-text">安装Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Hexo"><span class="toc-number">2.3.</span> <span class="toc-text">安装Hexo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始建站"><span class="toc-number">3.</span> <span class="toc-text">开始建站</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#部署到github-io"><span class="toc-number">3.1.</span> <span class="toc-text">部署到github.io</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用自己域名来解析"><span class="toc-number">3.2.</span> <span class="toc-text">使用自己域名来解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DNS解析"><span class="toc-number">3.2.1.</span> <span class="toc-text">DNS解析</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评论功能"><span class="toc-number">4.</span> <span class="toc-text">评论功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#申请多说"><span class="toc-number">4.1.</span> <span class="toc-text">申请多说</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Hexo？"><span class="toc-number">1.</span> <span class="toc-text">什么是Hexo？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装前提"><span class="toc-number">2.</span> <span class="toc-text">安装前提</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装git"><span class="toc-number">2.1.</span> <span class="toc-text">安装git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Node-js"><span class="toc-number">2.2.</span> <span class="toc-text">安装Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Hexo"><span class="toc-number">2.3.</span> <span class="toc-text">安装Hexo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始建站"><span class="toc-number">3.</span> <span class="toc-text">开始建站</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#部署到github-io"><span class="toc-number">3.1.</span> <span class="toc-text">部署到github.io</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用自己域名来解析"><span class="toc-number">3.2.</span> <span class="toc-text">使用自己域名来解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DNS解析"><span class="toc-number">3.2.1.</span> <span class="toc-text">DNS解析</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评论功能"><span class="toc-number">4.</span> <span class="toc-text">评论功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#申请多说"><span class="toc-number">4.1.</span> <span class="toc-text">申请多说</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写博客"><span class="toc-number">5.</span> <span class="toc-text">写博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
         
     </div>
     <style>
