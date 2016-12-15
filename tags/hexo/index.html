@@ -190,9 +190,9 @@
                     
                       <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
                     
-                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                      <a class="main-nav-link switch-friends-link" href="https://www.github.com/k3vi">GitHub</a>
                     
-                      <a class="main-nav-link switch-friends-link" href="http://k3vi.xyz/">MOxFIVE</a>
+                      <a class="main-nav-link switch-friends-link" href="http://k3vi.xyz/">K3vi</a>
                     
                     </div>
                 </section>
@@ -364,7 +364,7 @@
             
              archives: ".archive-article-title", 
              miniArchives: "a.post-list-link", 
-             menu: ".header-menu a", 
+            
              friends: "#js-friends a", 
              socail: ".social a" 
         }
@@ -379,11 +379,11 @@
         var titleTime;
         document.addEventListener("visibilitychange", function() {
             if (document.hidden) {
-                document.title = "隐" + originTitle;
+                document.title = "隐~" + originTitle;
                 clearTimeout(titleTime);
             }
             else {
-                document.title = "显" + originTitle;
+                document.title = "显~" + originTitle;
                 titleTime = setTimeout(function() {
                     document.title = originTitle;
                 }, 2000);
