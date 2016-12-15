@@ -137,13 +137,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>About Me</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -182,7 +182,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
                     </div>
                 </section>
                 
@@ -255,9 +255,123 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-使用hexo-Github搭建个人博客教程" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/15/使用hexo-Github搭建个人博客教程/" class="article-date">
+      <time datetime="2016-12-15T01:36:19.000Z" itemprop="datePublished">2016-12-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/15/使用hexo-Github搭建个人博客教程/">使用hexo+Github搭建个人博客教程</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>欢迎来到我的<a href="http://www.k3vi.xyz" target="_blank" rel="external">博客</a>，这是我的第一篇文章，之前使用hexo搭建个人博客时遇到很多的坑，所以写下这篇博客记录下安装过程。此篇主要是将从几个方面来告诉大家如何用hexo来搭建博客，下面我们开始吧！</p>
+<h2 id="什么是Hexo？"><a href="#什么是Hexo？" class="headerlink" title="什么是Hexo？"></a>什么是Hexo？</h2><p>Hexo 是一个简单的博客形态的静态站点生产机器。它有一个模版目录，其中包含原始文本格式的文档，通过 Markdown （或者 Textile） 以及 Liquid 转化成一个完整的可发布的静态网站，你可以发布在任何你喜爱的服务器上。Jekyll 也可以运行在 GitHub Page 上，也就是说，你可以使用 GitHub 的服务来搭建你的项目页面、博客或者网站，而且是完全免费的</p>
+<h2 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h2><p>安装Hexo很简单。在安装前你需要一下应用程序</p>
+<ul>
+<li><a href="http://nodejs.org" target="_blank" rel="external">Node.js</a></li>
+<li><a href="git-scm.com">Git</a></li>
+</ul>
+<p>如果你电脑里面有这些程序，你只需要使用npm就可以安装Hexo了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure></p>
+<h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><ul>
+<li>windows：安装<a href="https://git-scm.com/download/win" target="_blank" rel="external">git</a></li>
+<li><p>Linux(Ubuntu,Debian) <figure class="highlight plain"><figcaption><span>sudo apt install git-core```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 安装Node.js</div><div class="line">- windows：到[nodejs官网](http://nodejs.org)下载并安装</div><div class="line">- linux：这里提供hexo.io官网提供的安装方式就是使用nvm。</div></pre></td></tr></table></figure></p>
+<p>  $ curl <a href="https://raw.github.com/creationix/nvm/master/install.sh" target="_blank" rel="external">https://raw.github.com/creationix/nvm/master/install.sh</a> | sh<br>  安装完成后<strong>重启终端</strong>并执行下面的命令即可安装Node.js。<br>  $ nvm install stable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 安装Hexo</div><div class="line">在git和nodejs安装完成后就可以使用，npm安装hexo了。windows、linux安装方式相同</div><div class="line">```bash</div><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="开始建站"><a href="#开始建站" class="headerlink" title="开始建站"></a>开始建站</h2><p>安装Hexo完成后，执行以下命令，Hexo将会在指定的文件夹中建立所需要的文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo init [folder] <span class="comment"># folder 可选项，默认在当前文件夹中建立</span></div><div class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</div><div class="line">$ npm install</div></pre></td></tr></table></figure></p>
+<p>一个基本的hexo的目录结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── _config.yml</div><div class="line">├── package.json</div><div class="line">├── scaffolds</div><div class="line">├── source</div><div class="line">|   └── _posts</div><div class="line">└── themes</div></pre></td></tr></table></figure></p>
+<p>文件功能简介</p>
+<ul>
+<li>_config.yml</li>
+<li>themes<br>每个文件具体的功能你可以去<a href="https://hexo.io/zh-cn/docs/setup.html" target="_blank" rel="external">官网</a>查看</li>
+</ul>
+<p>此时你就可以直接执行命令来启动你的网站了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
+<p>此时博客已经初步搭建完成了，but只能在本地运行，下面我们要把他部署到github.io上面</p>
+<h3 id="部署到github-io"><a href="#部署到github-io" class="headerlink" title="部署到github.io"></a>部署到github.io</h3><ol>
+<li>首先你需要有一个github的账号，然后创建一个仓库。仓库名类似username.github.io，如我的仓库名就叫做k3vi.github.io。</li>
+<li><p>之后修改你的配置网站的配置文件_config.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type:git</div><div class="line">  repo:https://github.com/your_user_name/your_user_name.github.io.git</div><div class="line">  branch:master</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用github的话需要安装deploer-git</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>然后执行配置命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+</li>
+<li><p>现在你就可以在浏览器中输入your_user_name.github.io来访问你的博客了，这个your_user_name改成你的github的用户名就可以了</p>
+</li>
+<li>每次部署都需要按照以下三步来<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo generate</div><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="使用自己域名来解析"><a href="#使用自己域名来解析" class="headerlink" title="使用自己域名来解析"></a>使用自己域名来解析</h3><h4 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h4><ol>
+<li>先ping下your_user_name.github.io的地址，然后添加两条A记录@，www，如我的域名<a href="http://k3vi.xyz">k3vi.xyz</a>，无论你是访问k3vi.xyz还是访问www.k3vi.xyz都可以访问。此时你可以先访问下看看是不是会报错。</li>
+<li>要想github解析成功就需要在你的本地的网站目录下的source文件夹中新建一个名为CNAME的文件，文件内容为你的域名。之后执行hexo deploy将本地的内容推送到github上面就可以访问了。<br>为什么要把文件放在source下面呢？CNAME文件只有放在网站跟目录，你访问你的域名时github才会给你解析，但是hexo每次推送前都会执行hexo clean会把CNAME文件删除，只有放在source文件下面，hexo会自动生成一个CNAME文件到根目录。</li>
+</ol>
+<h2 id="评论功能"><a href="#评论功能" class="headerlink" title="评论功能"></a>评论功能</h2><p>目前评论系统支持的有多说、Disqus</p>
+<h3 id="申请多说"><a href="#申请多说" class="headerlink" title="申请多说"></a>申请多说</h3><ol>
+<li>访问<a href="http://duoshuo.com" target="_blank" rel="external">多说官网</a>,使用你的QQ、微博等账号登陆，在官网点击我要安装<img src="http://i.imgur.com/bRshCV9.png" alt=""></li>
+<li>站点地址填写你的域名，多说域名是一会要用到的短名<img src="http://i.imgur.com/xRUCk8B.png" alt=""></li>
+<li>查看你的主题是否支持多说，如果支持找到主题目录的下面的_config.yml，例如你的主题是yelee，那么你的_config.yml就在/themes/yelee/_config.yml</li>
+<li>不同的主题在评论功能方面的设置是不同的，支持多说的主题只需要填入你申请的短域名就可以，例如liming.duoshuo.com你只需要填入liming就可以了</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://hexo.io" target="_blank" rel="external">Hexo官网文档</a></li>
+<li><a href="https://www.v2ex.com/t/189440" target="_blank" rel="external">Github Page域名解析问题</a></li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -333,14 +447,14 @@
                 2016 k3vi
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -349,7 +463,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -382,9 +496,9 @@
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
