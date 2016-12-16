@@ -21,13 +21,14 @@
 <meta property="og:url" content="http://k3vi.xyz/2016/12/15/使用hexo-Github搭建个人博客教程/index.html">
 <meta property="og:site_name" content="k3vi's Blog">
 <meta property="og:description" content="欢迎来到我的[博客](http://www.k3vi.xyz)，这是我的第一篇文章，之前使用hexo搭建个人博客时遇到很多的坑，所以写下这篇博客记录下安装过程。">
+<meta property="og:image" content="http://i.imgur.com/TOsVosH.png">
 <meta property="og:image" content="http://i.imgur.com/bRshCV9.png">
 <meta property="og:image" content="http://i.imgur.com/xRUCk8B.png">
-<meta property="og:updated_time" content="2016-12-15T09:19:27.086Z">
+<meta property="og:updated_time" content="2016-12-16T02:36:28.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用hexo+Github搭建个人博客教程">
 <meta name="twitter:description" content="欢迎来到我的[博客](http://www.k3vi.xyz)，这是我的第一篇文章，之前使用hexo搭建个人博客时遇到很多的坑，所以写下这篇博客记录下安装过程。">
-<meta name="twitter:image" content="http://i.imgur.com/bRshCV9.png">
+<meta name="twitter:image" content="http://i.imgur.com/TOsVosH.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -288,7 +289,7 @@
 <li><p>之后修改你的配置网站的配置文件_config.yml，找到deploy将它修改成如下的样子</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://github.com/k3vi/k3vi.github.io.git #将k3vi换成你的github用户名</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
 </li>
-<li><p>使用github的话需要安装hexo-deploer-git</p>
+<li><p>如果报下面的错误的话，需要安装hexo-deploer-git<br><img src="http://i.imgur.com/TOsVosH.png" alt=""></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
 </li>
 <li><p>然后执行配置命令：</p>
