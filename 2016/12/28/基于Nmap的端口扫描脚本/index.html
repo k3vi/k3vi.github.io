@@ -15,19 +15,23 @@
 
 
 
-<meta name="description" content="学习python有段时间，一直想学着写一个完善的端口扫描器，但是一直没有付诸实践，这几天刚好需要用到，试着写一下，今天先写一个TCP connect 的扫描器">
+<meta name="description" content="上一篇是使用python + socket写的一个端口扫描器，但是效果毋庸置疑肯定一般，而且获取到的服务器信息也很少，这次使用python的nmap模块来写一个端口扫描">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Python编写端口扫描器">
-<meta property="og:url" content="http://k3vi.xyz/2016/12/19/使用Python编写端口扫描器/index.html">
+<meta property="og:title" content="基于Nmap的端口扫描脚本">
+<meta property="og:url" content="http://k3vi.xyz/2016/12/28/基于Nmap的端口扫描脚本/index.html">
 <meta property="og:site_name" content="k3vi's Blog">
-<meta property="og:description" content="学习python有段时间，一直想学着写一个完善的端口扫描器，但是一直没有付诸实践，这几天刚好需要用到，试着写一下，今天先写一个TCP connect 的扫描器">
-<meta property="og:image" content="http://i.imgur.com/r5fF1o8.png">
-<meta property="og:image" content="http://i.imgur.com/1kkk1LM.png">
-<meta property="og:updated_time" content="2016-12-19T08:50:11.476Z">
+<meta property="og:description" content="上一篇是使用python + socket写的一个端口扫描器，但是效果毋庸置疑肯定一般，而且获取到的服务器信息也很少，这次使用python的nmap模块来写一个端口扫描">
+<meta property="og:image" content="http://i.imgur.com/8qmn5ZV.png">
+<meta property="og:image" content="http://i.imgur.com/CBI271X.png">
+<meta property="og:image" content="http://i.imgur.com/MVngn7c.png">
+<meta property="og:image" content="http://i.imgur.com/UTZMfPC.png">
+<meta property="og:image" content="http://i.imgur.com/Fl80qHm.png">
+<meta property="og:image" content="http://i.imgur.com/pxV5WEF.png">
+<meta property="og:updated_time" content="2016-12-28T08:53:05.506Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Python编写端口扫描器">
-<meta name="twitter:description" content="学习python有段时间，一直想学着写一个完善的端口扫描器，但是一直没有付诸实践，这几天刚好需要用到，试着写一下，今天先写一个TCP connect 的扫描器">
-<meta name="twitter:image" content="http://i.imgur.com/r5fF1o8.png">
+<meta name="twitter:title" content="基于Nmap的端口扫描脚本">
+<meta name="twitter:description" content="上一篇是使用python + socket写的一个端口扫描器，但是效果毋庸置疑肯定一般，而且获取到的服务器信息也很少，这次使用python的nmap模块来写一个端口扫描">
+<meta name="twitter:image" content="http://i.imgur.com/8qmn5ZV.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +63,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>使用Python编写端口扫描器 | k3vi&#39;s Blog</title>
+<title>基于Nmap的端口扫描脚本 | k3vi&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -271,11 +275,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-使用Python编写端口扫描器" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-基于Nmap的端口扫描脚本" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/19/使用Python编写端口扫描器/" class="article-date">
-      <time datetime="2016-12-19T03:19:32.000Z" itemprop="datePublished">2016-12-19</time>
+      <a href="/2016/12/28/基于Nmap的端口扫描脚本/" class="article-date">
+      <time datetime="2016-12-28T07:34:25.000Z" itemprop="datePublished">2016-12-28</time>
 </a>
 
 
@@ -290,7 +294,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      使用Python编写端口扫描器
+      基于Nmap的端口扫描脚本
     </h1>
   
 
@@ -301,7 +305,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/端口扫描/">端口扫描</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nmap/">Nmap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/端口扫描/">端口扫描</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -311,16 +315,19 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>学习python有段时间，一直想学着写一个完善的端口扫描器，但是一直没有付诸实践，这几天刚好需要用到，试着写一下，今天先写一个TCP connect 的扫描器.</p>
-<h2 id="什么是端口扫描器"><a href="#什么是端口扫描器" class="headerlink" title="什么是端口扫描器"></a>什么是端口扫描器</h2><p>端口扫描常用于用于探测服务器或主机开放端口情况，被计算机管理员用于确认安全策略，同时被攻击者用于识别目标主机上的可运作的网络服务。端口扫描是向一定范围的服务器端口发送对应请求，以此确认可使用的端口。虽然其本身并不是恶意的网络活动，但也是网络攻击者探测目标主机服务，以利用该服务的已知漏洞的重要手段。</p>
-<h3 id="使用python的socket模块来编写"><a href="#使用python的socket模块来编写" class="headerlink" title="使用python的socket模块来编写"></a>使用python的socket模块来编写</h3><p>这里直接利用socket模块建立一个tcp链接，对某一ip下的端口进行连接，如果连接成功就证明此端口开放<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">portScanner</span><span class="params">(host, port)</span>:</span></div><div class="line">    <span class="keyword">try</span>: </div><div class="line">        s = socket(AF_INET, SOCK_STREAM) <span class="comment"># 建立一个socket连接</span></div><div class="line">        s.connect((host, port)) <span class="comment"># 连接我们传过来的ip和端口号</span></div><div class="line">        print(<span class="string">'[+] %d open'</span> % port) <span class="comment"># 输出开放的端口号</span></div><div class="line">        s.close() <span class="comment"># 关闭连接</span></div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">startScan</span><span class="params">(ip)</span>:</span></div><div class="line">	<span class="keyword">for</span> p <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">1000</span>): <span class="comment"># 测试1-65535端口</span></div><div class="line">		portScanner(ip,p)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">	startScan(<span class="string">"192.168.1.1"</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">	main()</div></pre></td></tr></table></figure></p>
-<p>这样一个单线程的端口扫描器就完成了</p>
-<h3 id="使用多线程来加快扫描速度"><a href="#使用多线程来加快扫描速度" class="headerlink" title="使用多线程来加快扫描速度"></a>使用多线程来加快扫描速度</h3><p>这里写成了类，方便以后进一步修改<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">#!/usr/bin/python3</span></div><div class="line"><span class="comment"># _*_ coding: utf-8 _*_</span></div><div class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</div><div class="line"><span class="keyword">import</span> threading</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Scanner</span>:</span> <span class="comment"># 定义一个类</span></div><div class="line">    portList = [] <span class="comment"># 定义一个列表，用于存放开放端口</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        print(<span class="string">'这是一个类'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">portScanner</span><span class="params">(self, host, port)</span>:</span> <span class="comment"># 定义一个函数，参数为ip和端口</span></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            s = socket(AF_INET, SOCK_STREAM) <span class="comment"># 建立一个socket连接</span></div><div class="line">            s.connect((host, port)) <span class="comment"># 连接我们传输过来的参数（ip，port）</span></div><div class="line">            print(<span class="string">'[+] %d open'</span> % port) <span class="comment"># 输出开放的端口号</span></div><div class="line">            self.portList.append(port) <span class="comment"># 将开放的端口添加到之前定义的list中</span></div><div class="line">            s.close() <span class="comment"># 关闭连接</span></div><div class="line">        <span class="keyword">except</span>:</div><div class="line">            <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">startScan</span><span class="params">(self, ip)</span>:</span></div><div class="line">        setdefaulttimeout(<span class="number">1</span>) <span class="comment"># 设置超时为1秒，如果网速太慢的话，这里就要修改下，不然扫描的结果不准确</span></div><div class="line">        <span class="keyword">for</span> p <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">65535</span>): <span class="comment"># 这里设置要扫描的端口</span></div><div class="line">            t = threading.Thread(target=self.portScanner, args=(ip, p)) <span class="comment"># 为每一个端口设置一个线程，加快扫描速度</span></div><div class="line">            t.setDaemon(<span class="keyword">True</span>) <span class="comment"># 线程守护</span></div><div class="line">            t.start() <span class="comment"># 启动线程</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        self.startScan(<span class="string">'192.168.19.129'</span>)</div><div class="line">        print(self.portList)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    scanner = Scanner()</div><div class="line">    scanner.run()</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure></p>
-<h3 id="对比单线程与多线程扫描用时对比"><a href="#对比单线程与多线程扫描用时对比" class="headerlink" title="对比单线程与多线程扫描用时对比"></a>对比单线程与多线程扫描用时对比</h3><ol>
-<li>单线程的扫描时间为97，端口数为100<br><img src="http://i.imgur.com/r5fF1o8.png" alt=""></li>
-<li>多线程的扫描时间为45S，端口数为65535<br><img src="http://i.imgur.com/1kkk1LM.png" alt=""><br>其实结果已经很明显了，使用多线程之后，扫描时间明显下降了很多。从数据上就可以很直观的看出来了</li>
-</ol>
-<p>自此这个简单的端口扫描器就写完了，其他的正在完善中，下一次带来的SYN扫描</p>
+        <p>上一篇是使用python + socket写的一个端口扫描器，但是效果毋庸置疑肯定一般，而且获取到的服务器信息也很少，这次使用python的nmap模块来写一个端口扫描。</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><h3 id="安装Nmap"><a href="#安装Nmap" class="headerlink" title="安装Nmap"></a>安装Nmap</h3><p>直接访问<a href="https://nmap.org/download.html" target="_blank" rel="external">Nmap官网</a>选择相应的平台下载<br>如下是 windows 平台<img src="http://i.imgur.com/8qmn5ZV.png" alt=""></p>
+<p>实在不知道如何安装Nmap可以百度一下哈，这里就不多说了</p>
+<h3 id="安装python-nmap模块"><a href="#安装python-nmap模块" class="headerlink" title="安装python-nmap模块"></a>安装python-nmap模块</h3><p>使用easy_install来安装<code># easy_install python-nmap</code>,下面的截图是安装成功之后的<br><img src="http://i.imgur.com/CBI271X.png" alt=""><br>测试下是不是安装成功？<br><img src="http://i.imgur.com/MVngn7c.png" alt=""><br>import模块没有报错，那就证明模块安装成功了</p>
+<h2 id="python-nmap模块的使用"><a href="#python-nmap模块的使用" class="headerlink" title="python-nmap模块的使用"></a>python-nmap模块的使用</h2><h3 id="单一端口"><a href="#单一端口" class="headerlink" title="单一端口"></a>单一端口</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> nmap</div><div class="line">x = nmap.PortScanner()</div><div class="line">output = x.scan(<span class="string">'192.168.19.129'</span>,<span class="string">'22'</span>)</div><div class="line">print(output)</div></pre></td></tr></table></figure>
+<p>我们看下返回信息<br><img src="http://i.imgur.com/UTZMfPC.png" alt=""><br>我们可以看到返回的信息是一个字典，里面有相关的端口信息，其中在name可以看到服务是ssh，在extrainfo处可以看到是2.0的协议，在state处可以看到端口是开放，现在我们来获取下state的值<br><code>&gt; output[&#39;scan&#39;][&#39;192.168.19.129&#39;][&#39;tcp&#39;][22][&#39;state&#39;]</code>这样就可以获取到端口的状态了</p>
+<h3 id="多个端口"><a href="#多个端口" class="headerlink" title="多个端口"></a>多个端口</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> nmap</div><div class="line">x = nmap.PortScanner()</div><div class="line">output = x.scan(<span class="string">'192.168.19.129'</span>,<span class="string">'22，80'</span>)</div><div class="line">print(output)</div></pre></td></tr></table></figure>
+<p><img src="http://i.imgur.com/Fl80qHm.png" alt=""><br>这样就可以扫描多个端口了，当然还可以1-65535这样的扫描，下面看一下截图<img src="http://i.imgur.com/pxV5WEF.png" alt=""></p>
+<hr>
+<p>关于nmap模块的其他用法，比如扫描ip段什么的，具体的可以查看下官方文档</p>
+<h2 id="动手写脚本"><a href="#动手写脚本" class="headerlink" title="动手写脚本"></a>动手写脚本</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># _*_ coding:utf8 _*_</span></div><div class="line"><span class="comment"># 基于nmap的端口扫描器</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> nmap</div><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">nmapScan</span><span class="params">(tgtHost, tgtPort)</span>:</span></div><div class="line">    nmScan = nmap.PortScanner()</div><div class="line">    nmScan.scan(tgtHost, tgtPort)</div><div class="line">    <span class="keyword">return</span> nmScan.analyse_nmap_xml_scan()</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">rangeScan</span><span class="params">(tgtHost)</span>:</span></div><div class="line">    infos = nmapScan(tgtHost, <span class="string">'1-65535'</span>)</div><div class="line">    portList = []</div><div class="line">    <span class="keyword">if</span> len(infos[<span class="string">'scan'</span>]) == <span class="number">0</span>: <span class="comment"># 判断主机是否存活</span></div><div class="line">        print(<span class="string">'[-]%s is down'</span> % tgtHost)</div><div class="line">        sys.exit()</div><div class="line">    <span class="keyword">for</span> port <span class="keyword">in</span> infos[<span class="string">'scan'</span>][tgtHost][<span class="string">'tcp'</span>]: <span class="comment"># 遍历开放的端口</span></div><div class="line">        portList.append(port)</div><div class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> portList: <span class="comment"># 遍历开放端口的相关信息</span></div><div class="line">        print(<span class="string">'[+]%d %s %s'</span> % (p, infos[<span class="string">'scan'</span>][tgtHost][<span class="string">'tcp'</span>][p]</div><div class="line">                               [<span class="string">'state'</span>], infos[<span class="string">'scan'</span>][tgtHost][<span class="string">'tcp'</span>][p][<span class="string">'product'</span>]))</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    rangeScan(<span class="string">'192.168.19.129'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<p>到此已经完成了这个脚本，功能就是获取指定ip的端口开放情况之后直接输出到屏幕，这个并没有再往下一步的写了。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>这次就简单了解这个模块，还有很多内容并没有写在上面，只要是为后面写集成扫描器打个基础。当然这个模块还有其他的一些用法没有了解到，如果有好的idea可以在后面给我留言</p>
 
       
     </div>
@@ -332,16 +339,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/28/基于Nmap的端口扫描脚本/">
-                    基于Nmap的端口扫描脚本
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/15/使用hexo-Github搭建个人博客教程/">
-                    使用hexo+Github搭建个人博客教程
+                <a href="/2016/12/19/使用Python编写端口扫描器/">
+                    使用Python编写端口扫描器
                 </a>
             </div>
         
@@ -353,7 +354,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是端口扫描器"><span class="toc-number">1.</span> <span class="toc-text">什么是端口扫描器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用python的socket模块来编写"><span class="toc-number">1.1.</span> <span class="toc-text">使用python的socket模块来编写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用多线程来加快扫描速度"><span class="toc-number">1.2.</span> <span class="toc-text">使用多线程来加快扫描速度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对比单线程与多线程扫描用时对比"><span class="toc-number">1.3.</span> <span class="toc-text">对比单线程与多线程扫描用时对比</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备"><span class="toc-number">1.</span> <span class="toc-text">准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Nmap"><span class="toc-number">1.1.</span> <span class="toc-text">安装Nmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装python-nmap模块"><span class="toc-number">1.2.</span> <span class="toc-text">安装python-nmap模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python-nmap模块的使用"><span class="toc-number">2.</span> <span class="toc-text">python-nmap模块的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单一端口"><span class="toc-number">2.1.</span> <span class="toc-text">单一端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多个端口"><span class="toc-number">2.2.</span> <span class="toc-text">多个端口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动手写脚本"><span class="toc-number">3.</span> <span class="toc-text">动手写脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写在最后"><span class="toc-number">4.</span> <span class="toc-text">写在最后</span></a></li></ol>
         
     </div>
     <style>
@@ -380,7 +381,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/19/使用Python编写端口扫描器/" data-title="使用Python编写端口扫描器" data-url="http://k3vi.xyz/2016/12/19/使用Python编写端口扫描器/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/28/基于Nmap的端口扫描脚本/" data-title="基于Nmap的端口扫描脚本" data-url="http://k3vi.xyz/2016/12/28/基于Nmap的端口扫描脚本/"></div>
     <script>
         var duoshuoQuery = {short_name:"k3vi"};
         var loadComment = function(){
@@ -403,15 +404,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/28/基于Nmap的端口扫描脚本/" title="上一篇: 基于Nmap的端口扫描脚本">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/15/使用hexo-Github搭建个人博客教程/" title="下一篇: 使用hexo+Github搭建个人博客教程">
+            <a href="/2016/12/19/使用Python编写端口扫描器/" title="下一篇: 使用Python编写端口扫描器">
                 <i class="fa fa-angle-right"></i>
             </a>
         
