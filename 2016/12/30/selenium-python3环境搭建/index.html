@@ -15,12 +15,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="k3vi's Blog">
-<meta property="og:url" content="http://k3vi.xyz/tags/端口扫描/index.html">
+<meta name="description" content="selenium 是一个web的自动化测试工具，但是这次使用它是为写爬虫，这样在处理js上面可以省去很多的事，这次只讲环境的搭建，具体的使用我建议去看下虫师的博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="selenium+python3环境搭建">
+<meta property="og:url" content="http://k3vi.xyz/2016/12/30/selenium-python3环境搭建/index.html">
 <meta property="og:site_name" content="k3vi's Blog">
+<meta property="og:description" content="selenium 是一个web的自动化测试工具，但是这次使用它是为写爬虫，这样在处理js上面可以省去很多的事，这次只讲环境的搭建，具体的使用我建议去看下虫师的博客">
+<meta property="og:updated_time" content="2016-12-30T03:11:42.305Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="k3vi's Blog">
+<meta name="twitter:title" content="selenium+python3环境搭建">
+<meta name="twitter:description" content="selenium 是一个web的自动化测试工具，但是这次使用它是为写爬虫，这样在处理js上面可以省去很多的事，这次只讲环境的搭建，具体的使用我建议去看下虫师的博客">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -52,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Tag: 端口扫描 | k3vi&#39;s Blog</title>
+<title>selenium+python3环境搭建 | k3vi&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -62,9 +66,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
-        isTag: true,
+        isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -260,89 +264,153 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-selenium-python3环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/12/28/基于Nmap的端口扫描脚本/" class="archive-article-date">
-      <time datetime="2016-12-28T07:34:25.000Z" itemprop="datePublished">12-28</time>
+    <div class="article-meta">
+      <a href="/2016/12/30/selenium-python3环境搭建/" class="article-date">
+      <time datetime="2016-12-30T02:16:38.000Z" itemprop="datePublished">2016-12-30</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/28/基于Nmap的端口扫描脚本/">基于Nmap的端口扫描脚本</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      selenium+python3环境搭建
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 
-          
+        
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nmap/">Nmap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/端口扫描/">端口扫描</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/selenium/">selenium</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>selenium 是一个web的自动化测试工具，但是这次使用它是为写爬虫，这样在处理js上面可以省去很多的事，这次只讲环境的搭建，具体的使用我建议去看下<a href="http://www.testpub.cn/" target="_blank" rel="external">虫师的博客</a></p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>准备工具如下：</p>
+<hr>
+<p>安装python：具体的安装我就不多说了，如果你要用的包不是必须要依赖于python2的话，建议直接使用python3.5。</p>
+<p>安装selenium：<br>无论是ubuntu还是windows，都可以使用pip或者easyz_install直接安装<code>pip install selenium</code>,如果在linux下面提示权限不够的话请使用root权限来安装</p>
+<p>前提准备已经做完了，现在要准备相应的webdriver，这个决定于你是用的是什么浏览器了</p>
+<p><strong>Firefox：</strong><br>新版已经把火狐的webdrver剥离了出来，所以需要单独下载。下载地址<a href="https://github.com/mozilla/geckodriver/releases" target="_blank" rel="external">https://github.com/mozilla/geckodriver/releases</a></p>
+<p><strong>Google Chrome :</strong><br>chrome浏览器本身就需要单独下载，下载地址<a href="https://chromedriver.storage.googleapis.com/index.html?path=2.27/" target="_blank" rel="external">https://chromedriver.storage.googleapis.com/index.html?path=2.27/</a>,选择相应的平台下载自己的所需</p>
+<p>之后把下载下来的文件放在一个文件夹中，之后把这个文件夹加入环境变量，或者直接放在已经加入了环境变量的文件夹中。</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>完成了上面的几步，我们来测试下是不是已经可以正常使用了<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding = utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"></div><div class="line">driver = webdriver.Firefox()</div><div class="line">driver.get(<span class="string">'http://k3vi.xyz'</span>)</div><div class="line"><span class="keyword">print</span> driver.title</div><div class="line">driver.quit()</div></pre></td></tr></table></figure></p>
+<h2 id="浏览器的选择"><a href="#浏览器的选择" class="headerlink" title="浏览器的选择"></a>浏览器的选择</h2><p>Chrome、Firefox、IE、phantomjs<br>这里我重点介绍phantomjs，phantomjs是一个基于webkit的没有界面的浏览器，所以运行起来比完整的浏览器要高效。下载地址<a href="https://bitbucket.org/ariya/phantomjs/downloads/" target="_blank" rel="external">https://bitbucket.org/ariya/phantomjs/downloads/</a>只需要选择相应平台下载就可以了<br>这里我最终使用的phantomjs</p>
+
+      
+    </div>
+    
   </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/12/28/基于Nmap的端口扫描脚本/">
+                    基于Nmap的端口扫描脚本
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备"><span class="toc-number">1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">2.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器的选择"><span class="toc-number">3.</span> <span class="toc-text">浏览器的选择</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
+
     
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/30/selenium-python3环境搭建/" data-title="selenium+python3环境搭建" data-url="http://k3vi.xyz/2016/12/30/selenium-python3环境搭建/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"k3vi"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/12/19/使用Python编写端口扫描器/" class="archive-article-date">
-      <time datetime="2016-12-19T03:19:32.000Z" itemprop="datePublished">12-19</time>
-</a>
+    <script> loadComment(); </script>
+
+</div>
+    
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/19/使用Python编写端口扫描器/">使用Python编写端口扫描器</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/端口扫描/">端口扫描</a></li></ul>
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/12/28/基于Nmap的端口扫描脚本/" title="下一篇: 基于Nmap的端口扫描脚本">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/30/selenium-python3环境搭建/">selenium+python3环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/基于Nmap的端口扫描脚本/">基于Nmap的端口扫描脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/使用Python编写端口扫描器/">使用Python编写端口扫描器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/15/使用hexo-Github搭建个人博客教程/">使用hexo+Github搭建个人博客教程</a></li></ul>
 
-    
 
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
